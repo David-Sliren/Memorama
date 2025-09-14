@@ -1,0 +1,336 @@
+$colors: (
+  "negro-suave": rgb(0, 0, 0, .6),
+  "azul-tenue": rgb(0, 0, 155, .6)
+  );
+  
+  $colors-letras: (
+    "negras": rgb(0, 0, 0),
+    "blancas": rgb(255, 255, 255),
+    "negras-opacas": rgb(0, 0, 0, .6),
+    "blancas-opacas": rgb(255, 255, 255, .6),
+    );
+    
+    @function tamañoLetra($tamaño){
+      @return $tamaño + em;
+    }
+
+
+    // Login
+    
+    .login{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      // background-color: aquamarine;
+      width: 100vw;
+      height: 100vh;
+      padding: 1em;
+      background-size: 600%;
+      animation: movimiento-2 12s ease infinite;
+      mix-blend-mode: difference;
+    }
+    
+    .bienvenida{
+      color: white;
+      font-size: 4em;
+      font-weight: 900;
+      font-style: italic;
+      mix-blend-mode: difference;
+      margin-bottom: 20px;
+    }
+    
+    .form{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 400px;
+      height: fit-content;
+      background-color: map-get($map: $colors, $key:negro-suave );
+      backdrop-filter: blur(30px);
+      padding: 2em;
+      border-radius: 1em;
+      box-shadow: 0 0 8px gray;
+    
+      img{
+        width: 5em;
+        height: 5em;
+        object-fit: cover;
+        border-radius: 100%;
+        mix-blend-mode: difference;
+        margin-bottom: 20px;
+      }
+      
+      input{
+        background-color: transparent;
+        padding: 0.5em;
+        padding-left: 0.8em;
+        border-radius: 20px;
+        color: map-get($map: $colors-letras, $key:blancas );
+        font-size: 1em;
+        font-weight: 650;
+        // border: 2px solid white;
+        outline: none;
+        backdrop-filter: blur(10px);
+        width: 280px;
+        transition: transform .4s ease;
+    
+      &:hover{
+        transform: scale(1.06);
+      }
+    
+        &::placeholder{
+          color: white;
+          font-size: 1.02em;
+          font-weight: 600;
+          transition: opacity .45s ease;
+        }
+    
+        &:focus-visible{
+          transform: scale(1.06);
+          &::placeholder{
+            opacity: 0;
+          }
+        }
+      }
+    }
+    
+    .btn{
+      background-color: rgb(180, 0, 0);
+      padding: 1em;
+      border-radius: 1em;
+      font-size: 0.8em;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(17, 17, 17, 0.8);
+      transition: transform .25s ease;
+    
+      &:hover{
+        transform: scale(1.12);
+      }
+    }
+    
+    .btn-h{
+      top: 2%;
+      right: 2%;
+      position: absolute;
+      width: 200px;
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      box-shadow: none;
+      mix-blend-mode: difference;
+    
+      &:hover{
+        mix-blend-mode: normal;
+      }
+    }
+    
+    @keyframes movimiento-2 {
+      0%, 100%{
+        background-image: linear-gradient(to right, white, black);
+        background-position: right;
+      }
+    
+      50%{
+        background-image: linear-gradient(to right, white, black);
+        background-position: left;
+      }
+    }
+    
+    .ingreso{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background-color: rgb(255, 255, 255, .2);
+      border-radius: 1em;
+      padding: 1em;
+      margin: 0 auto;
+      width: 400px;
+      backdrop-filter: blur(250px);
+      box-shadow: 0 0 8px gray;
+    }
+    
+    .ingreso-p{
+      font-size: 1.8em;
+      font-weight: 800;
+      font-style: italic;
+      color: map-get($map: $colors, $key: negro-suave );
+      mix-blend-mode: difference;
+    }
+
+// Home
+
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: map-get($map: $colors, $key: negro-suave );
+  font-family: Lobster, monospace;
+  color: map-get($map: $colors-letras, $key: blancas);
+  padding: 1em;
+  padding-top: 4em;
+  width: 100vw;
+  min-height: 100vh;
+  background-size: 400%;
+  animation: movimiento 9s ease infinite;
+}
+
+.home-title{
+  font-size: tamañoLetra(5);
+  font-weight: 900;
+  color: antiquewhite;
+  mix-blend-mode: difference;
+  // background-color: aqua
+}
+
+.home-container{
+  @extend .home-title;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // gap: 50px;
+  font-size: tamañoLetra(1.5);
+}
+
+.fecha{
+  font-size: tamañoLetra(2);
+  padding: 0.6em;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-family: monospace
+}
+
+.hora{
+  @extend .fecha;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+}
+
+@keyframes movimiento {
+  0%, 100%{
+    background-image: linear-gradient(to right, white, blue);
+    background-position: right;
+  }
+
+  50%{
+    background-image: linear-gradient(to right, white, blue);
+    background-position: left;
+  }
+}
+
+
+.game{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  // background-color: red;
+  max-width: 90%;
+  height: fit-content;
+  padding: 1em;
+  padding-top: 4.5em;
+}
+
+.puntuacion{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  // background-color: aqua;
+  width: 100%;
+  height: fit-content;
+  padding-left: 20px;
+  text-align: left;
+  font-size: 3em;
+  font-weight: 800;
+  font-style: italic;
+  font-family: monospace;
+  mix-blend-mode: difference;
+}
+
+.card{
+  position: relative;
+  border: none;
+  width: 200px;
+  height: 300px;
+  box-shadow: 0 0 8px gray;
+  border-radius: 10px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .5s ease;
+
+}
+
+.activada{
+transform: rotateY(180deg);
+}
+
+@mixin rotacion(){
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0; 
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  border: 2px solid rgb(180, 180, 180, .6);
+}
+
+.face{
+  @include rotacion();
+  background-color: black;
+  backface-visibility: hidden;
+  font-size: 4em;
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.back{
+  @include rotacion();
+  background-image: url(https://i.pinimg.com/1200x/b2/e4/67/b2e4678455ddf7dc573c83665ef10dfa.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+  pointer-events: none;
+}
+
+
+// Ganador
+
+.winner{
+  position: absolute;
+  top: 40%;
+  left: 34.45%;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: linear-gradient(to left, rgb(255,255,255, 0.5), rgb(0,0,0, 0.8));
+  background-color: map-get($map: $colors, $key: negro-suave );
+  width: 400px;
+  height: 200px;
+  padding: 1em;
+  border-radius: 1em;
+  border: 2px solid white;
+
+  h2{
+    font-size: 2em;
+    font-weight: 900;
+    color: map-get($map: $colors-letras, $key: blancas );
+    text-shadow: 1px 4px 2px black;
+  }
+}
